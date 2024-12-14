@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block content %} 
+    {% if user.is_authenticated is not none %}
+    <h1>Welcome {{ user.username |safe}} </h1>
+    {% else %}
+    <h1> Welcome </h1>
+    {% endif %}
+    
+    <form action="/logout" method="POST">
+        <button type="submit">Logout</button>
+    </form>
+    <ul>
+        <li>
+            <a href = "/login">Login</a>
+        </li>
+        <li>
+            <a href = "/register">Register</a>
+        </li>
+    </ul>
+{% endblock %}
